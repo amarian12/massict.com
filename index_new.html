@@ -39,7 +39,7 @@
 
   <script src="https://js.puter.com/v2/"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -1008,7 +1008,7 @@
         open() {
           const titleKey = this.DOM.navText.dataset.i18n;
           const currentTranslations = translations[currentLang];
-          this.info.title = currentTranslations[titleKey] || "AI Hub";
+          this.info.title = currentTranslations[titleKey] || "Mass AI Hub";
 
           // --- MODIFIED: INJECT AI STUDIO FORM HERE ---
           if (titleKey === 'ai_hub_title') {
@@ -1110,7 +1110,8 @@
                 <div class="col-lg-7 ps-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <label class="text-[10px] font-black uppercase tracking-widest text-slate-500">Structured Output Logs</label>
-                        <button onclick="exportPrompts()" class="btn btn-outline-warning btn-sm text-[10px] font-bold">BATCH EXPORT (.TXT)</button>
+                        <button onclick="exportPrompts()" class="btn btn-sm btn-outline-warning text-[10px] font-bold" style="font-size:10px;">BATCH EXPORT (.TXT)</button>
+						<button onclick="exportPDF()" class="btn btn-sm btn-outline-danger text-[10px] font-bold" style="font-size:10px;">Download PDF</button>
                     </div>
                     
                     <div id="promptContainer" class="ai-output-box custom-scrollbar mb-3 max-h-[300px]">
@@ -1351,6 +1352,35 @@
       const blob = new Blob([generatedPrompts.map(p => `[${p.title}]\n${p.content}`).join('\n\n')], { type: 'text/plain' });
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `MassICT_Simulation_Log_${Date.now()}.txt`; a.click();
     }
+	window.exportPDF = function() {
+    if (!window.jspdf) return alert("PDF Library loading...");
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Header
+    doc.setFontSize(20);
+    doc.setTextColor(249, 160, 63); // MassICT Orange
+    doc.text("MassICT AI Report", 10, 20);
+    
+    // Content
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    
+    const task = document.getElementById('taskType').value;
+    const role = document.getElementById('aiRole').value;
+    const prompt = document.getElementById('aiTestOutput').innerText;
+
+    doc.text(`Task Domain: ${task}`, 10, 40);
+    doc.text(`System Role: ${role}`, 10, 50);
+    doc.text("------------------------------------------------", 10, 60);
+    
+    // Split long text
+    const splitText = doc.splitTextToSize(prompt, 180);
+    doc.text(splitText, 10, 70);
+    
+    doc.save("MassICT_Report.pdf");
+    showToast("PDF Downloaded!");
+};	
   </script>
 </body>
 
