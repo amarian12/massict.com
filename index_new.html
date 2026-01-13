@@ -458,82 +458,98 @@
     }
 
     /* ADDED: AI STUDIO CSS (Compatible with Dark Theme) */
-    .ai-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #f9a03f;
-      text-transform: uppercase;
-      margin-bottom: 5px;
+    /* Form Styling (Kept exactly as requested but polished) */
+    .form-group label {
       display: block;
-      letter-spacing: 1px;
-    }
-
-    .ai-input {
-      width: 100%;
-      background: #353541;
-      border: 1px solid #f9a03f;
-      color: #fff;
-      padding: 10px;
-      border-radius: 4px;
-      font-size: 14px;
-      margin-bottom: 15px;
-      outline: none;
-    }
-
-    .ai-input:focus {
-      border-color: #fff;
-      box-shadow: 0 0 5px rgba(249, 160, 63, 0.5);
-    }
-
-    .ai-btn {
-      width: 100%;
-      background: #1e40af;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-weight: 700;
+      font-weight: 800;
+      color: var(--ict-orange);
+      margin-bottom: 8px;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      margin-top: 10px;
-      border-radius: 4px;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: #1a1a1a;
+      color: white;
+      outline: none;
       transition: 0.3s;
     }
 
-    .ai-btn:hover {
-      background: #f9a03f;
-      color: #262626;
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--ict-orange);
+      box-shadow: 0 0 0 2px rgba(249, 160, 63, 0.2);
     }
 
-    .ai-output {
-      background: #1a1a1a;
-      border: 1px solid #f9a03f;
-      border-left: 4px solid #f9a03f;
-      color: #ccc;
+    .generate-btn {
+      background: linear-gradient(135deg, #f9a03f 0%, #1e3a8a 100%);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 100%;
+      transition: 0.3s;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .generate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+
+    /* UI Results Improvements */
+    .example-item {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    .example-item.selected {
+      border-color: #06b6d4;
+      background: #082f49;
+    }
+
+    .example-content {
+      background: #000;
       padding: 15px;
-      min-height: 250px;
-      font-family: monospace;
-      font-size: 14px;
-      overflow-y: auto;
-      max-height: 400px;
+      border-radius: 8px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.85rem;
+      color: #06b6d4;
+      border: 1px solid #222;
     }
 
-    .ai-check-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 15px;
+    .live-benchmark-box {
+      background: #1e1e1e;
+      border: 1px solid #f9a03f;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 24px;
+      position: sticky;
+      top: 0;
     }
 
-    .ai-check-item {
-      font-size: 12px;
-      color: #ccc;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .ai-check-item input {
-      accent-color: #f25d39;
+    .prose-invert pre {
+      background: #000 !important;
+      border: 1px solid #333;
+      border-left: 4px solid var(--ict-red);
     }
 
     .prose pre {
@@ -587,7 +603,8 @@
                   for innovative ICT solutions and Digital Transformation across Europe.</p>
                 <div class="text-center mt-3">
                   <a href="mailto:info@massict.com" class="btn btn-outline-warning btn-lg"
-                    style="border-radius: 0; color: #f9a03f; border-color: #f9a03f;" data-i18n="contact_us_title">Contact Us</a>
+                    style="border-radius: 0; color: #f9a03f; border-color: #f9a03f;"
+                    data-i18n="contact_us_title">Contact Us</a>
                 </div>
               </div>
             </div>
@@ -699,7 +716,7 @@
                     <div class="product__description"></div>
                   </div>
                 </div>
-             </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1013,35 +1030,35 @@
             // Standard items use existing HTML description
             if (currentTranslations) {
               switch (titleKey) {
-              case 'vision_title':
-                this.info.descriptionHtml = `
+                case 'vision_title':
+                  this.info.descriptionHtml = `
                                 <p>${currentTranslations.vision_description_p1 || ''}</p>
                                 <p>${currentTranslations.vision_description_p2 || ''}</p>
                                 <p>${currentTranslations.vision_description_p3 || ''}</p>
                                 <p>${currentTranslations.vision_description_p4 || ''}</p>
                                 <p>${currentTranslations.vision_description_p5 || ''}</p>
                             `;
-                break;
-              case 'team_title':
-                this.info.descriptionHtml = `
+                  break;
+                case 'team_title':
+                  this.info.descriptionHtml = `
                                 <p class="mb-4">${currentTranslations.team_description_p1 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p2 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p3 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p4 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p5 || ''}</p>
                             `;
-                break;
-              case 'partnership_title':
-                this.info.descriptionHtml = `
+                  break;
+                case 'partnership_title':
+                  this.info.descriptionHtml = `
                                 <p>${currentTranslations.partnership_description_p1 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p2 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p3 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p4 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p5 || ''}</p>
                             `;
-                break;
-              case 'priorities_title':
-                this.info.descriptionHtml = `
+                  break;
+                case 'priorities_title':
+                  this.info.descriptionHtml = `
                                 <p>${currentTranslations.priorities_description_p1 || ''}</p>
                                 <h5>${currentTranslations.priorities_customer_centric_title || ''}</h5>
                                 <p>${currentTranslations.priorities_customer_centric_description || ''}</p>
@@ -1052,9 +1069,9 @@
                                 <h5>${currentTranslations.priorities_confident_knowledgeable_title || ''}</h5>
                                 <p>${currentTranslations.priorities_confident_knowledgeable_description || ''}</p>
                             `;
-                break;
-              case 'technology_title':
-                this.info.descriptionHtml = `
+                  break;
+                case 'technology_title':
+                  this.info.descriptionHtml = `
                                 <p>${currentTranslations.technology_description_p1 || ''}</p>
                                 <p>${currentTranslations.technology_description_p2 || ''}</p>
                                 <h5>${currentTranslations.technology_ict_cloud_title || ''}</h5>
@@ -1074,16 +1091,16 @@
                                 <h5>${currentTranslations.technology_digital_transformation_title || ''}</h5>
                                 <p>${currentTranslations.technology_digital_transformation_description || ''}</p>
                             `;
-                break;
-              case 'contact_us_title':
-                this.info.descriptionHtml = `
+                  break;
+                case 'contact_us_title':
+                  this.info.descriptionHtml = `
                                 <p>${currentTranslations.contact_us_description_p1 || ''}</p>
                                 <p><i class="fas fa-envelope fa-2x"></i> ${currentTranslations.contact_us_email || ''} </p>
                                 <p><i class="fas fa-mobile fa-2x"></i> ${currentTranslations.contact_us_phone || ''} </p>
                             `;
-                break;
-              default:
-                this.info.descriptionHtml = ''; // Fallback for unknown keys
+                  break;
+                default:
+                  this.info.descriptionHtml = ''; // Fallback for unknown keys
               }
             }
           }
@@ -1118,44 +1135,44 @@
       });
     }
   </script>
-    <script>
-        let generatedPrompts = [];
-        const promptTemplates = {
-            writing: { context: "As an experienced {role}, you need to create high-quality content for {audience}.", task: "Please write a {content_type} based on the following requirements." },
-            coding: { context: "You are a senior {role}, expert in software development...", task: "Please implement: {functionality}" },
-            analysis: { context: "As a senior {role}, you provide deep insights...", task: "Analyze following data matrix:" }
-        };
+  <script>
+    let generatedPrompts = [];
+    const promptTemplates = {
+      writing: { context: "As an experienced {role}, you need to create high-quality content for {audience}.", task: "Please write a {content_type} based on the following requirements." },
+      coding: { context: "You are a senior {role}, expert in software development...", task: "Please implement: {functionality}" },
+      analysis: { context: "As a senior {role}, you provide deep insights...", task: "Analyze following data matrix:" }
+    };
 
-        function getRoleText(role) { return {expert:"Expert", assistant:"Assistant", teacher:"Teacher", developer:"Senior Developer"}[role] || "Expert"; }
-        function getTaskTypeName(t) { return {writing:"Writing", coding:"Coding", analysis:"Analysis"}[t] || "General"; }
+    function getRoleText(role) { return { expert: "Expert", assistant: "Assistant", teacher: "Teacher", developer: "Senior Developer" }[role] || "Expert"; }
+    function getTaskTypeName(t) { return { writing: "Writing", coding: "Coding", analysis: "Analysis" }[t] || "General"; }
 
-        function openAIHub() { document.getElementById('ai-modal').classList.add('details--open'); document.body.classList.add('modal-open'); }
-        function closeModal() { document.getElementById('ai-modal').classList.remove('details--open'); document.body.classList.remove('modal-open'); }
+    function openAIHub() { document.getElementById('ai-modal').classList.add('details--open'); document.body.classList.add('modal-open'); }
+    function closeModal() { document.getElementById('ai-modal').classList.remove('details--open'); document.body.classList.remove('modal-open'); }
 
-        function generatePrompts() {
-            const settings = {
-                taskType: document.getElementById("taskType").value,
-                aiRole: document.getElementById("aiRole").value,
-                complexity: document.getElementById("complexity").value,
-                outputFormat: document.getElementById("outputFormat").value,
-                tone: document.getElementById("tone").value,
-                customContext: document.getElementById("customContext").value
-            };
+    function generatePrompts() {
+      const settings = {
+        taskType: document.getElementById("taskType").value,
+        aiRole: document.getElementById("aiRole").value,
+        complexity: document.getElementById("complexity").value,
+        outputFormat: document.getElementById("outputFormat").value,
+        tone: document.getElementById("tone").value,
+        customContext: document.getElementById("customContext").value
+      };
 
-            generatedPrompts = [];
-            for (let i = 1; i <= 2; i++) {
-                const template = promptTemplates[settings.taskType] || promptTemplates.writing;
-                let prompt = `## MISSION PROFILE\n${template.context.replace("{role}", getRoleText(settings.aiRole))}\n\n## OBJECTIVE\n${template.task}\n\n`;
-                if(settings.customContext) prompt += `## PROJECT CONTEXT\n${settings.customContext}\n\n`;
-                prompt += `## CONSTRAINTS\n- Format: ${settings.outputFormat}\n- Complexity: ${settings.complexity}\n- Style: ${settings.tone}`;
-                generatedPrompts.push({ title: `${getTaskTypeName(settings.taskType).toUpperCase()} FRAME 0${i}`, content: prompt });
-            }
-            displayPrompts();
-        }
+      generatedPrompts = [];
+      for (let i = 1; i <= 2; i++) {
+        const template = promptTemplates[settings.taskType] || promptTemplates.writing;
+        let prompt = `## MISSION PROFILE\n${template.context.replace("{role}", getRoleText(settings.aiRole))}\n\n## OBJECTIVE\n${template.task}\n\n`;
+        if (settings.customContext) prompt += `## PROJECT CONTEXT\n${settings.customContext}\n\n`;
+        prompt += `## CONSTRAINTS\n- Format: ${settings.outputFormat}\n- Complexity: ${settings.complexity}\n- Style: ${settings.tone}`;
+        generatedPrompts.push({ title: `${getTaskTypeName(settings.taskType).toUpperCase()} FRAME 0${i}`, content: prompt });
+      }
+      displayPrompts();
+    }
 
-        function displayPrompts() {
-            const container = document.getElementById("promptContainer");
-            container.innerHTML = generatedPrompts.map((p, i) => `
+    function displayPrompts() {
+      const container = document.getElementById("promptContainer");
+      container.innerHTML = generatedPrompts.map((p, i) => `
                 <div class="example-item" id="item-${i}">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex align-items-center">
@@ -1170,41 +1187,41 @@
                     <div class="example-content shadow-inner">${p.content}</div>
                 </div>
             `).join('');
-        }
+    }
 
-        let testPrompt = "";
-        function selectForTest(i) { 
-            testPrompt = generatedPrompts[i].content; 
-            document.querySelectorAll('.example-item').forEach(el => el.classList.remove('selected'));
-            document.getElementById(`item-${i}`).classList.add('selected');
-            document.getElementById('aiTestOutput').innerHTML = `<div class='text-blue-400 font-bold'>ACTIVE LOAD: ${generatedPrompts[i].title}</div><div class='text-slate-500'>Ready for engine execution.</div>`; 
-        }
+    let testPrompt = "";
+    function selectForTest(i) {
+      testPrompt = generatedPrompts[i].content;
+      document.querySelectorAll('.example-item').forEach(el => el.classList.remove('selected'));
+      document.getElementById(`item-${i}`).classList.add('selected');
+      document.getElementById('aiTestOutput').innerHTML = `<div class='text-blue-400 font-bold'>ACTIVE LOAD: ${generatedPrompts[i].title}</div><div class='text-slate-500'>Ready for engine execution.</div>`;
+    }
 
-        async function runAITest() {
-            if(!testPrompt) return alert("Please select a generated prompt frame first.");
-            const btn = document.getElementById('run-btn');
-            const output = document.getElementById('aiTestOutput');
-            btn.disabled = true;
-            output.innerHTML = "<div class='flex items-center gap-2'><div class='spinner-border spinner-border-sm text-blue-500'></div><span class='text-blue-500 uppercase font-black text-[10px] animate-pulse tracking-widest'>Establishing AI Link...</span></div>";
+    async function runAITest() {
+      if (!testPrompt) return alert("Please select a generated prompt frame first.");
+      const btn = document.getElementById('run-btn');
+      const output = document.getElementById('aiTestOutput');
+      btn.disabled = true;
+      output.innerHTML = "<div class='flex items-center gap-2'><div class='spinner-border spinner-border-sm text-blue-500'></div><span class='text-blue-500 uppercase font-black text-[10px] animate-pulse tracking-widest'>Establishing AI Link...</span></div>";
 
-            try {
-                // Keyless AI orchestration
-                const response = await puter.ai.chat(testPrompt, { model: document.getElementById('model-select').value });
-                output.innerHTML = marked.parse(response.toString());
-            } catch (err) {
-                output.innerHTML = `<div class='text-red-500 font-bold'>ENCRYPTION ERROR: ${err.message}</div>`;
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = "Execute Benchmarking Simulation";
-            }
-        }
+      try {
+        // Keyless AI orchestration
+        const response = await puter.ai.chat(testPrompt, { model: document.getElementById('model-select').value });
+        output.innerHTML = marked.parse(response.toString());
+      } catch (err) {
+        output.innerHTML = `<div class='text-red-500 font-bold'>ENCRYPTION ERROR: ${err.message}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "Execute Benchmarking Simulation";
+      }
+    }
 
-        function copyPrompt(i) { navigator.clipboard.writeText(generatedPrompts[i].content); alert("Prompt copied to MassICT secure clipboard."); }
-        function exportPrompts() { 
-            const blob = new Blob([generatedPrompts.map(p => `[${p.title}]\n${p.content}`).join('\n\n')], {type: 'text/plain'});
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `MassICT_Simulation_Log_${Date.now()}.txt`; a.click();
-        }
-    </script>
+    function copyPrompt(i) { navigator.clipboard.writeText(generatedPrompts[i].content); alert("Prompt copied to MassICT secure clipboard."); }
+    function exportPrompts() {
+      const blob = new Blob([generatedPrompts.map(p => `[${p.title}]\n${p.content}`).join('\n\n')], { type: 'text/plain' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `MassICT_Simulation_Log_${Date.now()}.txt`; a.click();
+    }
+  </script>
 </body>
 
 </html>
