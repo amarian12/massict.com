@@ -1378,7 +1378,7 @@
     const splitText = doc.splitTextToSize(prompt, 180);
     doc.text(splitText, 10, 70);
     
-    doc.save("MassICT_Report.pdf");
+    doc.save("MassICT_Simulation_Log_${Date.now()}.pdf");
     showToast("PDF Downloaded!");
 };	
   </script>
