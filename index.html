@@ -924,7 +924,7 @@
             if (currentTranslations) {
               switch (titleKey) {
               case 'vision_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.vision_description_p1 || ''}</p>
                                 <p>${currentTranslations.vision_description_p2 || ''}</p>
                                 <p>${currentTranslations.vision_description_p3 || ''}</p>
@@ -933,7 +933,7 @@
                             `;
                 break;
               case 'team_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p class="mb-4">${currentTranslations.team_description_p1 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p2 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p3 || ''}</p>
@@ -942,7 +942,7 @@
                             `;
                 break;
               case 'partnership_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.partnership_description_p1 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p2 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p3 || ''}</p>
@@ -951,7 +951,7 @@
                             `;
                 break;
               case 'priorities_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.priorities_description_p1 || ''}</p>
                                 <h5>${currentTranslations.priorities_customer_centric_title || ''}</h5>
                                 <p>${currentTranslations.priorities_customer_centric_description || ''}</p>
@@ -964,7 +964,7 @@
                             `;
                 break;
               case 'technology_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.technology_description_p1 || ''}</p>
                                 <p>${currentTranslations.technology_description_p2 || ''}</p>
                                 <h5>${currentTranslations.technology_ict_cloud_title || ''}</h5>
@@ -986,14 +986,14 @@
                             `;
                 break;
               case 'contact_us_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.contact_us_description_p1 || ''}</p>
                                 <p><i class="fas fa-envelope fa-2x"></i> ${currentTranslations.contact_us_email || ''} </p>
                                 <p><i class="fas fa-mobile fa-2x"></i> ${currentTranslations.contact_us_phone || ''} </p>
                             `;
                 break;
               default:
-                descriptionHtml = ''; // Fallback for unknown keys
+                this.info.descriptionHtml = ''; // Fallback for unknown keys
               }
             }
           }
