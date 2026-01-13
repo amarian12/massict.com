@@ -490,8 +490,23 @@
       border-color: var(--ict-orange);
       box-shadow: 0 0 0 2px rgba(249, 160, 63, 0.2);
     }
-    .btn-mass { background: transparent; color: #f9a03f; border: 1px solid #f9a03f; padding: 12px 20px; width: 100%; font-weight: 700; text-transform: uppercase; transition: 0.3s; margin-top: 10px; }
-    .btn-mass:hover { background: #f9a03f; color: #262626; }
+
+    .btn-mass {
+      background: transparent;
+      color: #f9a03f;
+      border: 1px solid #f9a03f;
+      padding: 12px 20px;
+      width: 100%;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-mass:hover {
+      background: #f9a03f;
+      color: #262626;
+    }
 
     /* UI Results Improvements */
     .example-item {
@@ -541,14 +556,119 @@
       color: #06b6d4;
       margin-top: 10px;
     }
-    .ai-label { font-size: 11px; font-weight: 800; color: #f9a03f; text-transform: uppercase; margin-bottom: 5px; display: block; }
-    .ai-input { color: var(--ict-orange); background: #1a1a1a; border: 1px solid #f9a03f; padding: 10px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; outline: none; }
-    .ai-input:focus { box-shadow: 0 0 8px rgba(249, 160, 63, 0.4); }
-    .ai-output-box { background: #1a1a1a; border: 1px solid #444; border-left: 3px solid #f9a03f; color: #ccc; padding: 15px; font-family: monospace; font-size: 14px; overflow-y: auto; margin-top: 10px; }
-    .ai-check-item { font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 8px; cursor: pointer; }
-    .ai-check-item input { accent-color: #f25d39; }
-    .ai-btn { background: #1e40af; color: white; border: none; transition: 0.3s; }
-    .ai-btn:hover { background: #f9a03f; color: #262626; }
+
+    .ai-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #f9a03f;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .ai-input {
+      color: var(--ict-orange);
+      background: #1a1a1a;
+      border: 1px solid #f9a03f;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    .ai-input:focus {
+      box-shadow: 0 0 8px rgba(249, 160, 63, 0.4);
+    }
+
+    .ai-output-box {
+      background: #1a1a1a;
+      border: 1px solid #444;
+      border-left: 3px solid #f9a03f;
+      color: #ccc;
+      padding: 15px;
+      font-family: monospace;
+      font-size: 14px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+
+    .ai-check-item {
+      font-size: 12px;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .ai-check-item input {
+      accent-color: #f25d39;
+    }
+
+    .ai-btn {
+      background: #1e40af;
+      color: white;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .ai-btn:hover {
+      background: #f9a03f;
+      color: #262626;
+    }
+
+    .toast-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #1e40af;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      border-left: 4px solid #f9a03f;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .toast-show {
+      transform: translateX(0);
+    }
+
+    /* AI Result Styling */
+    .ai-output-box code {
+      background: #2d2d2d;
+      color: #e6db74;
+      /* Monokai Yellow */
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: 'Consolas', monospace;
+    }
+
+    .ai-output-box pre {
+      background: #111;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 3px solid #f9a03f;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+
+    .ai-output-box pre code {
+      background: transparent;
+      color: #a6e22e;
+      /* Monokai Green */
+      padding: 0;
+    }
+
+    .ai-output-box strong {
+      color: #f9a03f;
+      /* Highlight keywords in Orange */
+    }
+	    .result-content { background: #000; padding: 10px; font-family: monospace; font-size: 12px; color: #06b6d4; white-space: pre-wrap; border: 1px solid #333; }
+
   </style>
 
   <script>
@@ -1174,7 +1294,7 @@
                              <button onclick="selectForTest(${i})" class="ai-btn">Load for Live</button>
                         </div>
                     </div>
-                    <div class="example-content shadow-inner">${p.content}</div>
+                    <div class="result-content">${p.content}</div>
                 </div>
             `).join('');
     }
@@ -1187,26 +1307,46 @@
       document.getElementById('aiTestOutput').innerHTML = `<div class='text-blue-400 font-bold'>ACTIVE LOAD: ${generatedPrompts[i].title}</div><div class='text-slate-500'>Ready for engine execution.</div>`;
     }
 
-    async function runAITest() {
-      if (!testPrompt) return alert("Please select a generated prompt frame first.");
+    window.runAITest = async function () {
+      if (!testPrompt) return showToast("Please load a prompt first."); // Use Toast
+
       const btn = document.getElementById('run-btn');
-      const output = document.getElementById('aiTestOutput');
+      const out = document.getElementById('aiTestOutput');
+      const originalText = btn.innerHTML; // Save original text
+
+      // UI Loading State
       btn.disabled = true;
-      output.innerHTML = "<div class='flex items-center gap-2'><div class='spinner-border spinner-border-sm text-blue-500'></div><span class='text-blue-500 uppercase font-black text-[10px] animate-pulse tracking-widest'>Establishing AI Link...</span></div>";
+      btn.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> NEGOTIATING WITH AI...`;
+      out.innerHTML = `<div class="text-center p-4"><i class="fas fa-brain fa-pulse fa-2x text-warning"></i><br><span class="text-muted text-xs mt-2">Processing Request...</span></div>`;
 
       try {
-        // Keyless AI orchestration
         const response = await puter.ai.chat(testPrompt, { model: document.getElementById('model-select').value });
-        output.innerHTML = marked.parse(response.toString());
+        out.innerHTML = marked.parse(response.toString());
       } catch (err) {
-        output.innerHTML = `<div class='text-red-500 font-bold'>ENCRYPTION ERROR: ${err.message}</div>`;
+        out.innerHTML = `<div class='text-danger p-3 border border-danger rounded'><strong>System Error:</strong> ${err.message}</div>`;
       } finally {
         btn.disabled = false;
-        btn.innerHTML = "Execute Benchmarking Simulation";
+        btn.innerHTML = originalText; // Restore text
       }
     }
+    function showToast(message) {
+      let toast = document.getElementById('mass-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'mass-toast';
+        toast.className = 'toast-notification';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      toast.classList.add('toast-show');
+      setTimeout(() => toast.classList.remove('toast-show'), 3000);
+    }
 
-    function copyPrompt(i) { navigator.clipboard.writeText(generatedPrompts[i].content); alert("Prompt copied to MassICT secure clipboard."); }
+    // UPDATE YOUR COPY FUNCTION:
+    function copyPrompt(i) {
+      navigator.clipboard.writeText(generatedPrompts[i].content);
+      showToast("✓ Content copied to clipboard"); // Uses new system
+    }
     function exportPrompts() {
       const blob = new Blob([generatedPrompts.map(p => `[${p.title}]\n${p.content}`).join('\n\n')], { type: 'text/plain' });
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `MassICT_Simulation_Log_${Date.now()}.txt`; a.click();
