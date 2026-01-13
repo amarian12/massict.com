@@ -490,26 +490,8 @@
       border-color: var(--ict-orange);
       box-shadow: 0 0 0 2px rgba(249, 160, 63, 0.2);
     }
-
-    .generate-btn {
-      background: linear-gradient(135deg, #f9a03f 0%, #1e3a8a 100%);
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      width: 100%;
-      transition: 0.3s;
-      margin-top: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .generate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
-    }
+    .btn-mass { background: transparent; color: #f9a03f; border: 1px solid #f9a03f; padding: 12px 20px; width: 100%; font-weight: 700; text-transform: uppercase; transition: 0.3s; margin-top: 10px; }
+    .btn-mass:hover { background: #f9a03f; color: #262626; }
 
     /* UI Results Improvements */
     .example-item {
@@ -559,6 +541,7 @@
       color: #06b6d4;
       margin-top: 10px;
     }
+
   </style>
 
   <script>
@@ -993,7 +976,7 @@
                             <textarea id="customContext" class="h-24" placeholder="Enter background info or specific ICT scenarios..."></textarea>
                         </div>
 
-                        <button onclick="generatePrompts()" class="generate-btn">Construct Prompt Framework</button>
+                        <button onclick="generatePrompts()" class="btn-mass">Construct Prompt Framework</button>
                     </div>
                 </div>
 
@@ -1013,7 +996,7 @@
                                 <div class="w-2 h-2 bg-blue-500 rounded-full animate-ping me-3"></div>
                                 <h3 class="text-xs font-black uppercase tracking-widest text-blue-400 m-0">Live AI Benchmark</h3>
                             </div>
-                            <select id="model-select" class="text-[10px] font-bold bg-slate-900 text-white border border-blue-900 rounded-full px-4 py-1 outline-none">
+                            <select id="model-select" class="">
                                 <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
                                 <option value="claude-3.7-sonnet">Claude 3.7 Sonnet</option>
                                 <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
@@ -1022,7 +1005,7 @@
                         <div id="aiTestOutput" class="example-content min-h-[150px] text-white prose prose-invert prose-sm max-w-none custom-scrollbar overflow-y-auto max-h-[300px]">
                             <span class="text-slate-500 italic">Load a prompt frame and execute simulation.</span>
                         </div>
-                        <button onclick="runAITest()" id="run-btn" class="btn btn-primary w-100 mt-4 fw-black uppercase text-xs py-3 rounded-lg tracking-widest">Execute Benchmarking Simulation</button>
+                        <button onclick="runAITest()" id="run-btn" class="btn-mass">Execute Benchmarking Simulation</button>
                     </div>
                 </div>
                </div>`;
