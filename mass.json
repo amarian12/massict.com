@@ -53,7 +53,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Turning Corporate Dreams into Real Outcomes",
         "intro_summary": "Your strategic partner for innovative ICT solutions and Digital Transformation across Europe.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "nl": {
         "vision_title": "Visie",
@@ -109,7 +110,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Bedrijfsdromen Omzetten in Reële Resultaten",
         "intro_summary": "Uw strategische partner voor innovatieve ICT-oplossingen en Digitale Transformatie in heel Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "ro": {
         "vision_title": "Viziune",
@@ -165,8 +167,9 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Transformarea visurilor corporative în rezultate reale",
         "intro_summary": "Partenerul dumneavoastră strategic pentru soluții TIC inovatoare și Transformare Digitală în toată Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
-    },
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
+   },
     "fr": {
         "vision_title": "Vision",
         "vision_description_p1": "<strong>Simplifier la Complexité Numérique:</strong> Nous transcendons la simple fourniture technologique en permettant aux entreprises de prospérer. Nous transformons les rêves ambitieux en résultats réels grâce à des solutions IT durables.",
@@ -221,7 +224,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Transformer les Rêves d'Entreprise en Résultats Réels",
         "intro_summary": "Votre partenaire stratégique pour des solutions TIC innovantes et la Transformation Numérique à travers l'Europe.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "it": {
         "vision_title": "Visione",
@@ -277,7 +281,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Trasformare i Sogni Aziendali in Risultati Reali",
         "intro_summary": "Il tuo partner strategico per soluzioni ICT innovative e Trasformazione Digitale in tutta Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "pt": {
         "vision_title": "Visão",
@@ -333,7 +338,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Transformando Sonhos Corporativos em Resultados Reais",
         "intro_summary": "Seu parceiro estratégico para soluções de TIC inovadoras e Transformação Digital em toda a Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "es": {
         "vision_title": "Visión",
@@ -389,7 +395,8 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Transformando Sueños Corporativos en Resultados Reales",
         "intro_summary": "Su socio estratégico para soluciones TIC innovadoras y Transformación Digital en toda Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     },
     "de": {
         "vision_title": "Vision",
@@ -445,6 +452,7 @@
         "contact_us_phone": "+31624681367",
         "banner_text": "Unternehmensvisionen in reale Ergebnisse verwandeln",
         "intro_summary": "Ihr strategischer Partner für innovative ICT-Lösungen und Digitale Transformation in ganz Europa.",
-        "copyright_text": "Copyright @ {year} MassICT."
+        "copyright_text": "Copyright @ {year} MassICT.",
+        "ai_hub_title": "MassICT AI Prompt Generator."		
     }
 }

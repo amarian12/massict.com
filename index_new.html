@@ -541,7 +541,17 @@
       color: #06b6d4;
       margin-top: 10px;
     }
-
+    .ai-label { font-size: 11px; font-weight: 800; color: #f9a03f; text-transform: uppercase; margin-bottom: 5px; display: block; }
+    .ai-input { 
+        width: 100%; background: #353541; border: 1px solid #f9a03f; color: #fff; 
+        padding: 10px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; outline: none; 
+    }
+    .ai-input:focus { box-shadow: 0 0 8px rgba(249, 160, 63, 0.4); }
+    .ai-output-box { background: #1a1a1a; border: 1px solid #444; border-left: 3px solid #f9a03f; color: #ccc; padding: 15px; min-height: 250px; font-family: monospace; font-size: 14px; overflow-y: auto; margin-top: 10px; }
+    .ai-check-item { font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .ai-check-item input { accent-color: #f25d39; }
+    .ai-btn { background: #1e40af; color: white; border: none; transition: 0.3s; }
+    .ai-btn:hover { background: #f9a03f; color: #262626; }
   </style>
 
   <script>
@@ -890,7 +900,7 @@
                 <div class="col-lg-5 border-end border-secondary pe-4 mb-4">
                     <div class="settings-panel">
                         <div class="form-group mb-3">
-                            <label for="taskType">Task Type</label>
+                            <label for="taskType" class="ai-label">Task Type</label>
                             <select id="taskType">
                                 <option value="writing">Content Writing</option>
                                 <option value="analysis">Data Analysis</option>
@@ -904,7 +914,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="aiRole">AI Role Setting</label>
+                            <label for="aiRole" class="ai-label">AI Role Setting</label>
                             <select id="aiRole">
                                 <option value="expert">Subject Matter Expert</option>
                                 <option value="assistant">Professional Assistant</option>
@@ -919,7 +929,7 @@
                         <div class="row g-2">
                             <div class="col-6">
                                 <div class="form-group mb-3">
-                                    <label for="complexity">Complexity</label>
+                                    <label for="complexity" class="ai-label">Complexity</label>
                                     <select id="complexity">
                                         <option value="basic">Basic</option>
                                         <option value="intermediate">Intermediate</option>
@@ -930,7 +940,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
-                                    <label for="outputFormat">Output Format</label>
+                                    <label for="outputFormat" class="ai-label">Output Format</label>
                                     <select id="outputFormat">
                                         <option value="structured">Structured Text</option>
                                         <option value="bullet_points">Bullet Points</option>
@@ -944,7 +954,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="tone">Tone & Style</label>
+                            <label for="tone" class="ai-label">Tone & Style</label>
                             <select id="tone">
                                 <option value="professional">Professional</option>
                                 <option value="friendly">Friendly</option>
@@ -956,12 +966,12 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="targetAudience">Target Audience</label>
+                            <label for="targetAudience" class="ai-label">Target Audience</label>
                             <input type="text" id="targetAudience" value="Professionals">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label>Include Elements</label>
+                            <label class="ai-label">Include Elements</label>
                             <div class="grid grid-cols-2 gap-2 mt-2">
                                 <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="context" checked class="accent-orange-500"> Context</label>
                                 <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="examples" checked class="accent-orange-500"> Examples</label>
@@ -972,7 +982,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="customContext">Custom Context</label>
+                            <label for="customContext class="ai-label">Custom Context</label>
                             <textarea id="customContext" class="h-24" placeholder="Enter background info or specific ICT scenarios..."></textarea>
                         </div>
 
@@ -986,7 +996,7 @@
                         <button onclick="exportPrompts()" class="btn btn-outline-warning btn-sm text-[10px] font-bold">BATCH EXPORT (.TXT)</button>
                     </div>
                     
-                    <div id="promptContainer" class="custom-scrollbar overflow-y-auto pr-3" style="max-height: 450px;">
+                    <div id="promptContainer" class="ai-output-box custom-scrollbar mb-3" style="max-height: 450px;">
                         <div class="text-center p-5 text-muted italic opacity-50">Configure parameters and generate to view logs...</div>
                     </div>
 
@@ -1163,8 +1173,8 @@
                             <span class="text-[10px] font-black text-warning uppercase tracking-widest">${p.title}</span>
                         </div>
                         <div class="flex gap-2">
-                             <button onclick="copyPrompt(${i})" class="text-[9px] font-bold text-slate-500 hover:text-white uppercase">Copy Raw</button>
-                             <button onclick="selectForTest(${i})" class="btn btn-cyan text-white text-[9px] font-black px-3 py-1 rounded bg-blue-600 hover:bg-blue-400 uppercase">Load for Test</button>
+                             <button onclick="copyPrompt(${i})" class="ai-btn">Copy Raw</button>
+                             <button onclick="selectForTest(${i})" class="ai-btn">Load for Live</button>
                         </div>
                     </div>
                     <div class="example-content shadow-inner">${p.content}</div>
