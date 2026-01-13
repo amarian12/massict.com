@@ -542,10 +542,7 @@
       margin-top: 10px;
     }
     .ai-label { font-size: 11px; font-weight: 800; color: #f9a03f; text-transform: uppercase; margin-bottom: 5px; display: block; }
-    .ai-input { 
-        width: 100%; background: #353541; border: 1px solid #f9a03f; color: #fff; 
-        padding: 10px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; outline: none; 
-    }
+    .ai-input { background: #1a1a1a; border: 1px solid #f9a03f; color: #fff; padding: 10px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; outline: none; }
     .ai-input:focus { box-shadow: 0 0 8px rgba(249, 160, 63, 0.4); }
     .ai-output-box { background: #1a1a1a; border: 1px solid #444; border-left: 3px solid #f9a03f; color: #ccc; padding: 15px; min-height: 250px; font-family: monospace; font-size: 14px; overflow-y: auto; margin-top: 10px; }
     .ai-check-item { font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 8px; cursor: pointer; }
@@ -970,19 +967,19 @@
                             <input type="text" id="targetAudience" value="Professionals">
                         </div>
 
-                        <div class="form-group mb-3">
+                        <div class="mb-3">
                             <label class="ai-label">Include Elements</label>
                             <div class="grid grid-cols-2 gap-2 mt-2">
-                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="context" checked class="accent-orange-500"> Context</label>
-                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="examples" checked class="accent-orange-500"> Examples</label>
-                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="constraints" checked class="accent-orange-500"> Constraints</label>
-                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="stepByStep" checked class="accent-orange-500"> Steps</label>
-                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="validation" checked class="accent-orange-500"> Validation</label>
+                                <label class="ai-check-item"><input type="checkbox" id="context" checked class="accent-orange-500"> Context</label>
+                                <label class="ai-check-item"><input type="checkbox" id="examples" checked class="accent-orange-500"> Examples</label>
+                                <label class="ai-check-item"><input type="checkbox" id="constraints" checked class="accent-orange-500"> Constraints</label>
+                                <label class="ai-check-item"><input type="checkbox" id="stepByStep" checked class="accent-orange-500"> Steps</label>
+                                <label class="ai-check-item"><input type="checkbox" id="validation" checked class="accent-orange-500"> Validation</label>
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="customContext class="ai-label">Custom Context</label>
+                            <label for="customContext" class="ai-label">Custom Context</label>
                             <textarea id="customContext" class="h-24" placeholder="Enter background info or specific ICT scenarios..."></textarea>
                         </div>
 
@@ -1006,7 +1003,7 @@
                                 <div class="w-2 h-2 bg-blue-500 rounded-full animate-ping me-3"></div>
                                 <h3 class="text-xs font-black uppercase tracking-widest text-blue-400 m-0">Live AI Benchmark</h3>
                             </div>
-                            <select id="model-select" class="">
+                            <select id="model-select" class="ai-input">
                                 <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
                                 <option value="claude-3.7-sonnet">Claude 3.7 Sonnet</option>
                                 <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
