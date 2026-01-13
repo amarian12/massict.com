@@ -10,7 +10,6 @@
   <meta name="keywords"
     content="MassICT, IT solutions, digital transformation, cloud solutions, cybersecurity, managed IT services, ICT, business growth, IT alignment, Netherlands, Romania, Europe">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.massict.com/">
   <meta property="og:title" content="MassICT – Digital Transformation & IT Solutions for Business Growth">
@@ -18,13 +17,13 @@
     content="MassICT provides innovative IT solutions and strategic digital transformation services to empower businesses. We specialize in cloud, cybersecurity, managed IT, and more.">
   <meta property="og:image" content="https://www.massict.com/img/logo2.png">
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.massict.com/">
   <meta property="twitter:title" content="MassICT – Digital Transformation & IT Solutions for Business Growth">
   <meta property="twitter:description"
     content="MassICT provides innovative IT solutions and strategic digital transformation services to empower businesses. We specialize in cloud, cybersecurity, managed IT, and more.">
   <meta property="twitter:image" content="https://www.massict.com/img/logo2.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
@@ -37,6 +36,10 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+
+  <script src="https://js.puter.com/v2/"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <style>
     body {
       font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -50,35 +53,27 @@
     /* Prevent main page scrolling when a popup is active */
     body.modal-open {
       overflow: hidden;
-      /* This stops scrolling on the main page */
     }
 
-    /* Custom scrollbar styling for Webkit browsers */
+    /* Custom scrollbar styling */
     ::-webkit-scrollbar {
       width: 10px;
-      /* width of the entire scrollbar */
     }
 
     ::-webkit-scrollbar-track {
       background: #353541;
-      /* color of the tracking area */
       border-radius: 5px;
     }
 
     ::-webkit-scrollbar-thumb {
       background-color: #f25d39;
-      /* color of the scroll thumb */
       border-radius: 5px;
-      /* roundness of the scroll thumb */
       border: 2px solid #353541;
-      /* creates padding around scroll thumb */
     }
 
     ::-webkit-scrollbar-thumb:hover {
       background-color: #f9a03f;
-      /* color of the scroll thumb on hover */
     }
-
 
     .baner-body {
       --bs-bg-opacity: 1;
@@ -187,6 +182,9 @@
     .product {
       background: transparent;
       transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      background-color: #262626;
     }
 
     .product:hover {
@@ -204,7 +202,6 @@
       margin-bottom: 25px;
     }
 
-    /* Expanding Grid Items from Codrops */
     .tm-page-title {
       font-weight: 300;
     }
@@ -222,12 +219,6 @@
       margin: 10px;
     }
 
-    .product {
-      position: relative;
-      cursor: pointer;
-      background-color: #262626;
-    }
-
     .product__bg {
       width: 100%;
       height: 100%;
@@ -240,7 +231,6 @@
       position: absolute;
     }
 
-    /* Styles for the source content, remains hidden */
     .product__description {
       width: 100%;
       height: 100%;
@@ -251,7 +241,7 @@
       display: none;
     }
 
-    /* Styles for the main modal container */
+    /* Modal Styles */
     .details {
       font-size: 1rem;
       width: 100%;
@@ -266,7 +256,6 @@
       padding: 15px;
       display: none;
       position: fixed;
-      /* Ensure details element is fixed to viewport */
       top: 0;
       left: 0;
     }
@@ -280,91 +269,52 @@
       pointer-events: auto;
     }
 
-    /* Styles for the modal's background element */
     .details__bg {
       width: 100%;
-      max-width: 900px;
+      max-width: 1300px;
       left: 0;
       right: 0;
       margin-left: auto;
       margin-right: auto;
       background: #262626;
-      /* Ensure background color is set */
       padding: 50px;
-      /* Keep padding */
       transform-origin: 0 0;
       display: flex;
-      /* Make it a flex container */
       flex-direction: column;
-      /* Stack children vertically */
-      max-height: 70vh;
-      /* Limit the overall height of the modal body to 70% of viewport height */
+      max-height: 85vh;
       box-sizing: border-box;
-      /* Include padding in height calculation */
       border: 1px solid #f9a03f;
-      /* Added border to the modal background */
       border-radius: 8px;
-      /* Added border-radius for rounded corners */
     }
 
-    /* Styles for the actual scrollable content within the modal */
     .details__description {
       flex-grow: 1;
-      /* Allow it to grow and fill available space */
       overflow-y: auto;
-      /* Enable vertical scrolling */
       overflow-x: hidden;
-      /* Prevent horizontal scrolling */
-      padding-right: 15px;
-      /* Adjusted padding-right to ensure space from scrollbar */
-      padding-left: 15px;
-      /* Added padding-left for consistent horizontal spacing */
-      padding-top: 15px;
-      /* Added padding-top for consistent vertical spacing */
-      padding-bottom: 15px;
-      /* Added padding-bottom for consistent vertical spacing */
+      padding: 15px;
       box-sizing: border-box;
       opacity: 0;
-      /* Initial state, animated by JS */
     }
 
-    /* Unified styling for text elements within the popup description */
     .details__description p {
       margin-bottom: 1rem;
-      /* Consistent spacing between paragraphs */
       text-align: justify;
-      /* Justify text for a cleaner block appearance */
     }
 
-    /* New style for the modal title */
     .details__modal-title {
       margin-bottom: 1.5rem;
-      /* Consistent spacing after main title */
       color: #f9a03f;
-      /* Ensure title color is consistent */
       text-align: center;
-      /* Center align title */
       font-size: 2.2rem;
-      /* Adjusted font size for modal title */
-      font-weight: 300;
-    }
-
-    /* Original tm-page-title style, now only applies to the hidden content */
-    .tm-page-title {
       font-weight: 300;
     }
 
     .details__description h5 {
       margin-top: 1.5rem;
-      /* Spacing before sub-headings */
       margin-bottom: 0.8rem;
-      /* Spacing after sub-headings */
       color: #f9a03f;
-      /* Ensure sub-heading color is consistent */
       text-align: left;
-      /* Align sub-headings to the left */
     }
-
 
     .tm-fa-close {
       font-size: 30px;
@@ -383,12 +333,11 @@
       z-index: 1001;
     }
 
-    /* Team */
+    /* Footer & Responsive */
     .tm-reverse-sm {
       flex-direction: row;
     }
 
-    /* Footer */
     footer {
       position: absolute;
       bottom: 30px;
@@ -456,9 +405,7 @@
 
       .content {
         margin-left: auto;
-        /* Center content block */
         margin-right: auto;
-        /* Center content block */
       }
 
       .tm-nav ul {
@@ -508,37 +455,119 @@
 
     .tm-nav-text {
       font-weight: 600;
-      /* Make menu text bolder */
+    }
+
+    /* ADDED: AI STUDIO CSS (Compatible with Dark Theme) */
+    .ai-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #f9a03f;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .ai-input {
+      width: 100%;
+      background: #353541;
+      border: 1px solid #f9a03f;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    .ai-input:focus {
+      border-color: #fff;
+      box-shadow: 0 0 5px rgba(249, 160, 63, 0.5);
+    }
+
+    .ai-btn {
+      width: 100%;
+      background: #1e40af;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 10px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .ai-btn:hover {
+      background: #f9a03f;
+      color: #262626;
+    }
+
+    .ai-output {
+      background: #1a1a1a;
+      border: 1px solid #f9a03f;
+      border-left: 4px solid #f9a03f;
+      color: #ccc;
+      padding: 15px;
+      min-height: 250px;
+      font-family: monospace;
+      font-size: 14px;
+      overflow-y: auto;
+      max-height: 400px;
+    }
+
+    .ai-check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .ai-check-item {
+      font-size: 12px;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .ai-check-item input {
+      accent-color: #f25d39;
+    }
+
+    .prose pre {
+      background: #000;
+      padding: 10px;
+      border: 1px solid #333;
+      color: #06b6d4;
+      margin-top: 10px;
     }
   </style>
+
   <script>
     document.documentElement.className = "js";
-    var supportsCssVars = function () {
-      var e, t = document.createElement("style");
-      t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e
-    };
+    var supportsCssVars = function () { var e, t = document.createElement("style"); t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
     supportsCssVars() || console.warn("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");
   </script>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "MassICT",
-  "url": "https://www.massict.com/",
-  "logo": "https://www.massict.com/img/logo2.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+31624681367",
-    "contactType": "Customer Service",
-    "email": "info@massict.com"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/massict"
-    // Add your social media profiles here
-  ]
-}
-</script>
-
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MassICT",
+      "url": "https://www.massict.com/",
+      "logo": "https://www.massict.com/img/logo2.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+31624681367",
+        "contactType": "Customer Service",
+        "email": "info@massict.com"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/massict"
+      ]
+    }
+  </script>
 </head>
 
 <body>
@@ -547,28 +576,30 @@
     <div class="tm-main-content">
       <div class="container tm-site-header-container">
         <div class="row">
+
           <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
             <div class="tm-site-header">
-              <div class="shadow-lg p-2 baner-body rounded"><img src="img/logo2.png" class="img-fluid mb-4"
+              <div class="shadow-lg p-2 baner-body rounded">
+                <img src="img/logo2.png" class="img-fluid mb-4"
                   alt="MassICT Logo - Digital Transformation & IT Solutions">
                 <h1 class="text-center fw-bold" data-i18n="banner_text">Turning Corporate Dreams into Real Outcomes</h1>
                 <p class="text-center mb-4" data-i18n="intro_summary" style="margin-top: 50px;">Your strategic partner
                   for innovative ICT solutions and Digital Transformation across Europe.</p>
                 <div class="text-center mt-3">
                   <a href="mailto:info@massict.com" class="btn btn-outline-warning btn-lg"
-                    style="border-radius: 0; color: #f9a03f; border-color: #f9a03f;">Get a Quote</a>
+                    style="border-radius: 0; color: #f9a03f; border-color: #f9a03f;" data-i18n="contact_us_title">Contact Us</a>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="content">
               <div class="grid">
                 <div class="grid__item">
                   <div class="product" role="button" aria-label="Vision" tabindex="0">
-                    <div class="tm-nav-link">
-                      <i class="fas fa-eye  fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="vision_title">Vision</span>
+                    <div class="tm-nav-link"><i class="fas fa-eye  fa-3x tm-nav-icon"></i><span class="tm-nav-text"
+                        data-i18n="vision_title">Vision</span>
                       <div class="product__bg"></div>
                     </div>
                     <div class="product__description">
@@ -582,9 +613,8 @@
                 </div>
                 <div class="grid__item">
                   <div class="product" role="button" aria-label="Team" tabindex="1">
-                    <div class="tm-nav-link">
-                      <i class="fas fa-users fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="team_title">Team</span>
+                    <div class="tm-nav-link"><i class="fas fa-users fa-3x tm-nav-icon"></i><span class="tm-nav-text"
+                        data-i18n="team_title">Team</span>
                       <div class="product__bg"></div>
                     </div>
                     <div class="product__description">
@@ -598,9 +628,8 @@
                 </div>
                 <div class="grid__item">
                   <div class="product" role="button" aria-label="Partnership" tabindex="2">
-                    <div class="tm-nav-link">
-                      <i class="fas fa-handshake fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="partnership_title">Partnership</span>
+                    <div class="tm-nav-link"><i class="fas fa-handshake fa-3x tm-nav-icon"></i><span class="tm-nav-text"
+                        data-i18n="partnership_title">Partnership</span>
                       <div class="product__bg"></div>
                     </div>
                     <div class="product__description">
@@ -614,9 +643,8 @@
                 </div>
                 <div class="grid__item">
                   <div class="product" role="button" aria-label="Priorities" tabindex="3">
-                    <div class="tm-nav-link">
-                      <i class="fas fa-calendar fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="priorities_title">Priorities</span>
+                    <div class="tm-nav-link"><i class="fas fa-calendar fa-3x tm-nav-icon"></i><span class="tm-nav-text"
+                        data-i18n="priorities_title">Priorities</span>
                       <div class="product__bg"></div>
                     </div>
                     <div class="product__description">
@@ -634,9 +662,8 @@
                 </div>
                 <div class="grid__item">
                   <div class="product" role="button" aria-label="Technology" tabindex="4">
-                    <div class="tm-nav-link">
-                      <i class="fas fa-computer fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="technology_title">Technology</span>
+                    <div class="tm-nav-link"><i class="fas fa-computer fa-3x tm-nav-icon"></i><span class="tm-nav-text"
+                        data-i18n="technology_title">Technology</span>
                       <div class="product__bg"></div>
                     </div>
                     <div class="product__description">
@@ -661,40 +688,43 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="grid__item">
-                  <div class="product" role="button" aria-label="Contact Us" tabindex="5">
+                  <div class="product" role="button" aria-label="AI Hub" tabindex="5">
                     <div class="tm-nav-link">
-                      <i class="fas fa-comments fa-3x tm-nav-icon"></i>
-                      <span class="tm-nav-text" data-i18n="contact_us_title">Contact Us</span>
+                      <i class="fas fa-robot fa-3x tm-nav-icon"></i>
+                      <span class="tm-nav-text" data-i18n="ai_hub_title">AI Hub</span>
                       <div class="product__bg"></div>
                     </div>
-                    <div class="product__description">
-                      <p data-i18n="contact_us_description_p1"></p>
-                      <p><i class="fas fa-envelope fa-2x"></i> <span style="margin-left: 10px;"
-                          data-i18n="contact_us_email">info@massict.com</span> </p>
-                      <p><i class="fas fa-mobile fa-2x"></i> <span style="margin-left: 10px;"
-                          data-i18n="contact_us_phone">+31624681367</span> </p>
-                    </div>
+                    <div class="product__description"></div>
                   </div>
                 </div>
-              </div>
+             </div>
             </div>
           </div>
         </div>
       </div>
-<footer>
-  <div class="language-selector">
-    <button class="lng" aria-label="Switch language to English"><span class="fi fi-us" data-lang="en"></span></button>
-    <button class="lng" aria-label="Wissel taal naar Nederlands"><span class="fi fi-nl" data-lang="nl"></span></button>
-    <button class="lng" aria-label="Sprache auf Deutsch umstellen"><span class="fi fi-de" data-lang="de"></span></button>
-    <button class="lng" aria-label="Schimbă limba în română"><span class="fi fi-ro" data-lang="ro"></span></button>
-    <button class="lng" aria-label="Changer la langue en français"><span class="fi fi-fr" data-lang="fr"></span></button>
-    <button class="lng" aria-label="Cambia lingua in italiano"><span class="fi fi-it" data-lang="it"></span></button>
-    <button class="lng" aria-label="Mudar idioma para português"><span class="fi fi-pt" data-lang="pt"></span></button>
-    <button class="lng" aria-label="Cambiar idioma a español"><span class="fi fi-es" data-lang="es"></span></button>
-  </div>
-  <p class="small tm-copyright-text" data-i18n="copyright_text"></p>
-</footer>
+      <footer>
+        <div class="language-selector">
+          <button class="lng" aria-label="Switch language to English"><span class="fi fi-us"
+              data-lang="en"></span></button>
+          <button class="lng" aria-label="Wissel taal naar Nederlands"><span class="fi fi-nl"
+              data-lang="nl"></span></button>
+          <button class="lng" aria-label="Sprache auf Deutsch umstellen"><span class="fi fi-de"
+              data-lang="de"></span></button>
+          <button class="lng" aria-label="Schimbă limba în română"><span class="fi fi-ro"
+              data-lang="ro"></span></button>
+          <button class="lng" aria-label="Changer la langue en français"><span class="fi fi-fr"
+              data-lang="fr"></span></button>
+          <button class="lng" aria-label="Cambia lingua in italiano"><span class="fi fi-it"
+              data-lang="it"></span></button>
+          <button class="lng" aria-label="Mudar idioma para português"><span class="fi fi-pt"
+              data-lang="pt"></span></button>
+          <button class="lng" aria-label="Cambiar idioma a español"><span class="fi fi-es"
+              data-lang="es"></span></button>
+        </div>
+        <p class="small tm-copyright-text" data-i18n="copyright_text"></p>
+      </footer>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -702,14 +732,27 @@
   <script>
     {
       let translations = {};
-      let currentLang = 'en'; // Default language
-      const translatableElements = {}; // Cache for translatable elements
+      let currentLang = 'en';
+      const translatableElements = {};
 
       async function loadTranslations(lang) {
         try {
           const response = await fetch('mass.json');
           const data = await response.json();
           translations = data;
+
+          // --- PATCH: Ensure AI Hub title exists if missing from JSON ---
+          if (!translations.en) translations.en = {};
+          if (!translations.nl) translations.nl = {};
+          if (!translations.ro) translations.ro = {};
+
+          // Use a simple loop to ensure 'ai_hub_title' exists for common langs
+          ['en', 'nl', 'ro', 'de', 'fr', 'it', 'pt', 'es'].forEach(l => {
+            if (translations[l] && !translations[l].ai_hub_title) {
+              translations[l].ai_hub_title = "AI Hub";
+            }
+          });
+
           currentLang = lang;
           applyTranslations();
         } catch (error) {
@@ -717,7 +760,6 @@
         }
       }
 
-      // Initialize translatableElements cache once on page load
       function cacheTranslatableElements() {
         document.querySelectorAll('[data-i18n]').forEach(element => {
           const key = element.dataset.i18n;
@@ -732,19 +774,14 @@
         for (const key in translatableElements) {
           if (translatableElements.hasOwnProperty(key) && translations[currentLang] && translations[currentLang][key]) {
             translatableElements[key].forEach(element => {
-              // For paragraphs and headers (which have varying content and might contain HTML)
-              // or spans (which only contain text)
               element.innerHTML = translations[currentLang][key];
             });
           }
         }
-
-        // Update dynamic copyright year
         const copyrightElement = document.querySelector('.tm-copyright-text');
         if (copyrightElement && translations[currentLang] && translations[currentLang].copyright_text) {
           copyrightElement.textContent = translations[currentLang].copyright_text.replace('{year}', new Date().getFullYear());
         }
-        // Update banner text specifically
         const bannerTextElement = document.querySelector('.baner-body h1');
         if (bannerTextElement && translations[currentLang] && translations[currentLang].banner_text) {
           bannerTextElement.textContent = translations[currentLang].banner_text;
@@ -758,17 +795,14 @@
       class Details {
         constructor() {
           this.DOM = {};
-
-
           const detailsTmpl = `
-<div class="details__bg details__bg--down">
-    <button class="details__close" aria-label="Close modal">
-        <i class="fas fa-2x fa-times icon--cross tm-fa-close"></i>
-    </button>
-    <h2 class="details__modal-title"></h2> 
-    <div class="details__description"></div>
-</div>
-`;
+            <div class="details__bg details__bg--down">
+                <button class="details__close" aria-label="Close modal">
+                    <i class="fas fa-2x fa-times icon--cross tm-fa-close"></i>
+                </button>
+                <h2 class="details__modal-title"></h2> 
+                <div class="details__description"></div>
+            </div>`;
           this.DOM.details = document.createElement('div');
           this.DOM.details.className = 'details';
           this.DOM.details.innerHTML = detailsTmpl;
@@ -778,160 +812,57 @@
         init() {
           this.DOM.bgDown = this.DOM.details.querySelector('.details__bg--down');
           this.DOM.close = this.DOM.details.querySelector('.details__close');
-          this.DOM.modalTitle = this.DOM.details.querySelector('.details__modal-title'); // Get the new title element
-          this.DOM.description = this.DOM.details.querySelector('.details__description'); // Get the description element
-
+          this.DOM.modalTitle = this.DOM.details.querySelector('.details__modal-title');
+          this.DOM.description = this.DOM.details.querySelector('.details__description');
           this.initEvents();
         }
         initEvents() {
-          // close page when outside of page is clicked.
           document.body.addEventListener('click', (event) => {
-            // Check if the click occurred outside the details modal AND the modal is open
             if (!this.DOM.details.contains(event.target) && this.DOM.details.classList.contains('details--open')) {
               this.close();
             }
           });
-          // prevent close page when inside of page is clicked.
-          this.DOM.bgDown.addEventListener('click', function (event) {
-            event.stopPropagation();
-          });
-          // close page when cross button is clicked.
+          this.DOM.bgDown.addEventListener('click', function (event) { event.stopPropagation(); });
           this.DOM.close.addEventListener('click', () => this.close());
         }
         fill(info) {
-          // Set the modal title from info.title
           this.DOM.modalTitle.textContent = info.title;
-
-          // Set the remaining content to the scrollable description area
           this.DOM.description.innerHTML = info.descriptionHtml;
         }
         getProductDetailsRect() {
-          var p = 0;
-          var d = 0;
-
-          try {
-            p = this.DOM.productBg.getBoundingClientRect();
-            d = this.DOM.bgDown.getBoundingClientRect();
-          }
-          catch (e) { }
-
-          return {
-            productBgRect: p,
-            detailsBgRect: d
-          };
+          var p = 0, d = 0;
+          try { p = this.DOM.productBg.getBoundingClientRect(); d = this.DOM.bgDown.getBoundingClientRect(); } catch (e) { }
+          return { productBgRect: p, detailsBgRect: d };
         }
         open(data) {
           if (this.isAnimating) return false;
           this.isAnimating = true;
-
-          this.DOM.details.style.display = 'flex'; // Use flex to center content
-
+          this.DOM.details.style.display = 'flex';
           this.DOM.details.classList.add('details--open');
-          document.body.classList.add('modal-open'); // Add class to body to prevent scroll
-
+          document.body.classList.add('modal-open');
           this.DOM.productBg = data.productBg;
-
           this.DOM.productBg.style.opacity = 0;
-
           const rect = this.getProductDetailsRect();
-
           this.DOM.bgDown.style.transform = `translateX(${rect.productBgRect.left - rect.detailsBgRect.left}px) translateY(${rect.productBgRect.top - rect.detailsBgRect.top}px) scaleX(${rect.productBgRect.width / rect.detailsBgRect.width}) scaleY(${rect.productBgRect.height / rect.detailsBgRect.height})`;
           this.DOM.bgDown.style.opacity = 1;
 
-          // animate background
-          anime({
-            targets: [this.DOM.bgDown],
-            duration: (target, index) => index ? 800 : 250,
-            easing: (target, index) => 'easeOutSine', // Changed to easeOutSine
-            elasticity: 250,
-            translateX: 0,
-            translateY: 0,
-            scaleX: 1,
-            scaleY: 1,
-            complete: () => {
-              this.isAnimating = false;
-              // Scroll to top after animation is complete
-              this.DOM.description.scrollTop = 0;
-            }
-          });
-
-          // animate content
-          anime({
-            targets: this.DOM.modalTitle, // Only modalTitle here
-            duration: 1000,
-            easing: 'easeOutExpo',
-            opacity: 1 // Only fade in, no translation
-          });
-
-          // Animate description separately
-          anime({
-            targets: this.DOM.description,
-            duration: 1000,
-            easing: 'easeOutExpo',
-            translateY: ['100%', 0],
-            opacity: 1
-          });
-
-
-          // animate close button
-          anime({
-            targets: this.DOM.close,
-            duration: 250,
-            easing: 'easeOutSine',
-            translateY: ['100%', 0],
-            opacity: 1
-          });
+          anime({ targets: [this.DOM.bgDown], duration: (target, index) => index ? 800 : 250, easing: (target, index) => 'easeOutSine', elasticity: 250, translateX: 0, translateY: 0, scaleX: 1, scaleY: 1, complete: () => { this.isAnimating = false; this.DOM.description.scrollTop = 0; } });
+          anime({ targets: this.DOM.modalTitle, duration: 1000, easing: 'easeOutExpo', opacity: 1 });
+          anime({ targets: this.DOM.description, duration: 1000, easing: 'easeOutExpo', translateY: ['100%', 0], opacity: 1 });
+          anime({ targets: this.DOM.close, duration: 250, easing: 'easeOutSine', translateY: ['100%', 0], opacity: 1 });
         }
         close() {
           if (this.isAnimating) return false;
           this.isAnimating = true;
-
           this.DOM.details.classList.remove('details--open');
-          document.body.classList.remove('modal-open'); // Remove class from body to re-enable scroll
-
-          anime({
-            targets: this.DOM.close,
-            duration: 250,
-            easing: 'easeOutSine',
-            translateY: '100%',
-            opacity: 0
-          });
-
-          // Animate modal title out
-          anime({
-            targets: this.DOM.modalTitle,
-            duration: 20,
-            easing: 'linear',
-            opacity: 0
-          });
-
-          // Animate description out
-          anime({
-            targets: this.DOM.description,
-            duration: 20,
-            easing: 'linear',
-            opacity: 0
-          });
-
+          document.body.classList.remove('modal-open');
+          anime({ targets: this.DOM.close, duration: 250, easing: 'easeOutSine', translateY: '100%', opacity: 0 });
+          anime({ targets: this.DOM.modalTitle, duration: 20, easing: 'linear', opacity: 0 });
+          anime({ targets: this.DOM.description, duration: 20, easing: 'linear', opacity: 0 });
           const rect = this.getProductDetailsRect();
-          anime({
-            targets: [this.DOM.bgDown],
-            duration: 250,
-            easing: 'easeOutSine',
-            translateX: rect.productBgRect.left - rect.detailsBgRect.left,
-            translateY: rect.productBgRect.top - rect.detailsBgRect.top,
-            scaleX: rect.productBgRect.width / rect.detailsBgRect.width,
-            scaleY: rect.productBgRect.height / rect.detailsBgRect.height,
-            complete: () => {
-              this.DOM.bgDown.style.opacity = 0;
-              this.DOM.bgDown.style.transform = 'none';
-              this.DOM.productBg.style.opacity = 1;
-              this.DOM.details.style.display = 'none';
-              this.isAnimating = false;
-            }
-          });
+          anime({ targets: [this.DOM.bgDown], duration: 250, easing: 'easeOutSine', translateX: rect.productBgRect.left - rect.detailsBgRect.left, translateY: rect.productBgRect.top - rect.detailsBgRect.top, scaleX: rect.productBgRect.width / rect.detailsBgRect.width, scaleY: rect.productBgRect.height / rect.detailsBgRect.height, complete: () => { this.DOM.bgDown.style.opacity = 0; this.DOM.bgDown.style.transform = 'none'; this.DOM.productBg.style.opacity = 1; this.DOM.details.style.display = 'none'; this.isAnimating = false; } });
         }
-      }; // class Details
+      };
 
       class Item {
         constructor(el) {
@@ -939,14 +870,9 @@
           this.DOM.el = el;
           this.DOM.product = this.DOM.el.querySelector('.product');
           this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
-          this.DOM.navText = this.DOM.el.querySelector('.tm-nav-text'); // Get the navigation text element
+          this.DOM.navText = this.DOM.el.querySelector('.tm-nav-text');
           this.DOM.productDescription = this.DOM.product.querySelector('.product__description');
-
-          this.info = {
-            title: '', // Title will be set on open
-            descriptionHtml: '' // Description will be set on open
-          };
-
+          this.info = { title: '', descriptionHtml: '' };
           this.initEvents();
         }
         initEvents() {
@@ -955,16 +881,140 @@
         open() {
           const titleKey = this.DOM.navText.dataset.i18n;
           const currentTranslations = translations[currentLang];
+          this.info.title = currentTranslations[titleKey] || "AI Hub";
 
-          // Set the title for the modal
-          this.info.title = currentTranslations[titleKey];
+          // --- MODIFIED: INJECT AI STUDIO FORM HERE ---
+          if (titleKey === 'ai_hub_title') {
+            this.info.descriptionHtml = `
+               <div class="row">
+                <div class="col-lg-5 border-end border-secondary pe-4 mb-4">
+                    <div class="settings-panel">
+                        <div class="form-group mb-3">
+                            <label for="taskType">Task Type</label>
+                            <select id="taskType">
+                                <option value="writing">Content Writing</option>
+                                <option value="analysis">Data Analysis</option>
+                                <option value="coding">Software Development</option>
+                                <option value="translation">Translation Services</option>
+                                <option value="education">Educational Tutoring</option>
+                                <option value="customer_service">Customer Service Assistant</option>
+                                <option value="creative">Creative Design</option>
+                                <option value="research">Research & Reporting</option>
+                            </select>
+                        </div>
 
-          // Dynamically build description HTML based on the current language and key
-          let descriptionHtml = '';
-          if (currentTranslations) { // Ensure translations exist for current language
-            switch (titleKey) {
+                        <div class="form-group mb-3">
+                            <label for="aiRole">AI Role Setting</label>
+                            <select id="aiRole">
+                                <option value="expert">Subject Matter Expert</option>
+                                <option value="assistant">Professional Assistant</option>
+                                <option value="teacher">Experienced Teacher</option>
+                                <option value="consultant">Strategic Consultant</option>
+                                <option value="analyst">Data Analyst</option>
+                                <option value="writer">Creative Writer</option>
+                                <option value="developer">Senior Developer</option>
+                            </select>
+                        </div>
+
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="form-group mb-3">
+                                    <label for="complexity">Complexity</label>
+                                    <select id="complexity">
+                                        <option value="basic">Basic</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="expert">Expert Level</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group mb-3">
+                                    <label for="outputFormat">Output Format</label>
+                                    <select id="outputFormat">
+                                        <option value="structured">Structured Text</option>
+                                        <option value="bullet_points">Bullet Points</option>
+                                        <option value="paragraph">Paragraph Essay</option>
+                                        <option value="table">Table Format</option>
+                                        <option value="code">Source Code</option>
+                                        <option value="json">JSON Format</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="tone">Tone & Style</label>
+                            <select id="tone">
+                                <option value="professional">Professional</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="formal">Formal</option>
+                                <option value="casual">Casual</option>
+                                <option value="persuasive">Persuasive</option>
+                                <option value="educational">Instructive</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="targetAudience">Target Audience</label>
+                            <input type="text" id="targetAudience" value="Professionals">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>Include Elements</label>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="context" checked class="accent-orange-500"> Context</label>
+                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="examples" checked class="accent-orange-500"> Examples</label>
+                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="constraints" checked class="accent-orange-500"> Constraints</label>
+                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="stepByStep" checked class="accent-orange-500"> Steps</label>
+                                <label class="flex items-center gap-3 text-[10px] uppercase font-bold text-slate-400 cursor-pointer"><input type="checkbox" id="validation" checked class="accent-orange-500"> Validation</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="customContext">Custom Context</label>
+                            <textarea id="customContext" class="h-24" placeholder="Enter background info or specific ICT scenarios..."></textarea>
+                        </div>
+
+                        <button onclick="generatePrompts()" class="generate-btn">Construct Prompt Framework</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 ps-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-500">Structured Output Logs</label>
+                        <button onclick="exportPrompts()" class="btn btn-outline-warning btn-sm text-[10px] font-bold">BATCH EXPORT (.TXT)</button>
+                    </div>
+                    
+                    <div id="promptContainer" class="custom-scrollbar overflow-y-auto pr-3" style="max-height: 450px;">
+                        <div class="text-center p-5 text-muted italic opacity-50">Configure parameters and generate to view logs...</div>
+                    </div>
+
+                    <div class="live-benchmark-box">
+                        <div class="d-flex justify-content-between align-items-center mb-4 border-b border-blue-900 pb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full animate-ping me-3"></div>
+                                <h3 class="text-xs font-black uppercase tracking-widest text-blue-400 m-0">Live AI Benchmark</h3>
+                            </div>
+                            <select id="model-select" class="text-[10px] font-bold bg-slate-900 text-white border border-blue-900 rounded-full px-4 py-1 outline-none">
+                                <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
+                                <option value="claude-3.7-sonnet">Claude 3.7 Sonnet</option>
+                                <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
+                            </select>
+                        </div>
+                        <div id="aiTestOutput" class="example-content min-h-[150px] text-white prose prose-invert prose-sm max-w-none custom-scrollbar overflow-y-auto max-h-[300px]">
+                            <span class="text-slate-500 italic">Load a prompt frame and execute simulation.</span>
+                        </div>
+                        <button onclick="runAITest()" id="run-btn" class="btn btn-primary w-100 mt-4 fw-black uppercase text-xs py-3 rounded-lg tracking-widest">Execute Benchmarking Simulation</button>
+                    </div>
+                </div>
+               </div>`;
+          } else {
+            // Standard items use existing HTML description
+            if (currentTranslations) {
+              switch (titleKey) {
               case 'vision_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.vision_description_p1 || ''}</p>
                                 <p>${currentTranslations.vision_description_p2 || ''}</p>
                                 <p>${currentTranslations.vision_description_p3 || ''}</p>
@@ -973,7 +1023,7 @@
                             `;
                 break;
               case 'team_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p class="mb-4">${currentTranslations.team_description_p1 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p2 || ''}</p>
                                 <p class="mb-4">${currentTranslations.team_description_p3 || ''}</p>
@@ -982,7 +1032,7 @@
                             `;
                 break;
               case 'partnership_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.partnership_description_p1 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p2 || ''}</p>
                                 <p>${currentTranslations.partnership_description_p3 || ''}</p>
@@ -991,7 +1041,7 @@
                             `;
                 break;
               case 'priorities_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.priorities_description_p1 || ''}</p>
                                 <h5>${currentTranslations.priorities_customer_centric_title || ''}</h5>
                                 <p>${currentTranslations.priorities_customer_centric_description || ''}</p>
@@ -1004,7 +1054,7 @@
                             `;
                 break;
               case 'technology_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.technology_description_p1 || ''}</p>
                                 <p>${currentTranslations.technology_description_p2 || ''}</p>
                                 <h5>${currentTranslations.technology_ict_cloud_title || ''}</h5>
@@ -1026,24 +1076,21 @@
                             `;
                 break;
               case 'contact_us_title':
-                descriptionHtml = `
+                this.info.descriptionHtml = `
                                 <p>${currentTranslations.contact_us_description_p1 || ''}</p>
                                 <p><i class="fas fa-envelope fa-2x"></i> ${currentTranslations.contact_us_email || ''} </p>
                                 <p><i class="fas fa-mobile fa-2x"></i> ${currentTranslations.contact_us_phone || ''} </p>
                             `;
                 break;
               default:
-                descriptionHtml = ''; // Fallback for unknown keys
+                this.info.descriptionHtml = ''; // Fallback for unknown keys
+              }
             }
           }
-          this.info.descriptionHtml = descriptionHtml;
-
           DOM.details.fill(this.info);
-          DOM.details.open({
-            productBg: this.DOM.productBg
-          });
+          DOM.details.open({ productBg: this.DOM.productBg });
         }
-      }; // class Item
+      };
 
       const DOM = {};
       DOM.grid = document.querySelector('.grid');
@@ -1051,45 +1098,113 @@
       DOM.gridItems = Array.from(DOM.grid.querySelectorAll('.grid__item'));
       let items = [];
       DOM.gridItems.forEach(item => items.push(new Item(item)));
-
       DOM.details = new Details();
 
-      // Original setupFooter and jQuery ready function
       function setupFooter() {
         var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
-
         var main = $('.tm-main-content');
-
-        if ($(window).height() < pageHeight) {
-          main.addClass('tm-footer-relative');
-        }
-        else {
-          main.removeClass('tm-footer-relative');
-        }
+        if ($(window).height() < pageHeight) { main.addClass('tm-footer-relative'); }
+        else { main.removeClass('tm-footer-relative'); }
       }
 
-      /* DOM is ready
-      ------------------------------------------------*/
       $(function () {
-        cacheTranslatableElements(); // Cache elements on initial load
-        loadTranslations('en'); // Load default language on page load
-
+        cacheTranslatableElements();
+        loadTranslations('en');
         setupFooter();
-
-        $(window).resize(function () {
-          setupFooter();
-        });
-
-        // Add event listeners for language buttons
+        $(window).resize(function () { setupFooter(); });
         document.querySelectorAll('.language-selector button').forEach(button => {
-          button.addEventListener('click', (event) => {
-            loadTranslations(event.target.dataset.lang);
-          });
+          button.addEventListener('click', (event) => { loadTranslations(event.target.dataset.lang); });
         });
       });
-
     }
   </script>
+    <script>
+        let generatedPrompts = [];
+        const promptTemplates = {
+            writing: { context: "As an experienced {role}, you need to create high-quality content for {audience}.", task: "Please write a {content_type} based on the following requirements." },
+            coding: { context: "You are a senior {role}, expert in software development...", task: "Please implement: {functionality}" },
+            analysis: { context: "As a senior {role}, you provide deep insights...", task: "Analyze following data matrix:" }
+        };
+
+        function getRoleText(role) { return {expert:"Expert", assistant:"Assistant", teacher:"Teacher", developer:"Senior Developer"}[role] || "Expert"; }
+        function getTaskTypeName(t) { return {writing:"Writing", coding:"Coding", analysis:"Analysis"}[t] || "General"; }
+
+        function openAIHub() { document.getElementById('ai-modal').classList.add('details--open'); document.body.classList.add('modal-open'); }
+        function closeModal() { document.getElementById('ai-modal').classList.remove('details--open'); document.body.classList.remove('modal-open'); }
+
+        function generatePrompts() {
+            const settings = {
+                taskType: document.getElementById("taskType").value,
+                aiRole: document.getElementById("aiRole").value,
+                complexity: document.getElementById("complexity").value,
+                outputFormat: document.getElementById("outputFormat").value,
+                tone: document.getElementById("tone").value,
+                customContext: document.getElementById("customContext").value
+            };
+
+            generatedPrompts = [];
+            for (let i = 1; i <= 2; i++) {
+                const template = promptTemplates[settings.taskType] || promptTemplates.writing;
+                let prompt = `## MISSION PROFILE\n${template.context.replace("{role}", getRoleText(settings.aiRole))}\n\n## OBJECTIVE\n${template.task}\n\n`;
+                if(settings.customContext) prompt += `## PROJECT CONTEXT\n${settings.customContext}\n\n`;
+                prompt += `## CONSTRAINTS\n- Format: ${settings.outputFormat}\n- Complexity: ${settings.complexity}\n- Style: ${settings.tone}`;
+                generatedPrompts.push({ title: `${getTaskTypeName(settings.taskType).toUpperCase()} FRAME 0${i}`, content: prompt });
+            }
+            displayPrompts();
+        }
+
+        function displayPrompts() {
+            const container = document.getElementById("promptContainer");
+            container.innerHTML = generatedPrompts.map((p, i) => `
+                <div class="example-item" id="item-${i}">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-terminal text-warning me-2"></i>
+                            <span class="text-[10px] font-black text-warning uppercase tracking-widest">${p.title}</span>
+                        </div>
+                        <div class="flex gap-2">
+                             <button onclick="copyPrompt(${i})" class="text-[9px] font-bold text-slate-500 hover:text-white uppercase">Copy Raw</button>
+                             <button onclick="selectForTest(${i})" class="btn btn-cyan text-white text-[9px] font-black px-3 py-1 rounded bg-blue-600 hover:bg-blue-400 uppercase">Load for Test</button>
+                        </div>
+                    </div>
+                    <div class="example-content shadow-inner">${p.content}</div>
+                </div>
+            `).join('');
+        }
+
+        let testPrompt = "";
+        function selectForTest(i) { 
+            testPrompt = generatedPrompts[i].content; 
+            document.querySelectorAll('.example-item').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`item-${i}`).classList.add('selected');
+            document.getElementById('aiTestOutput').innerHTML = `<div class='text-blue-400 font-bold'>ACTIVE LOAD: ${generatedPrompts[i].title}</div><div class='text-slate-500'>Ready for engine execution.</div>`; 
+        }
+
+        async function runAITest() {
+            if(!testPrompt) return alert("Please select a generated prompt frame first.");
+            const btn = document.getElementById('run-btn');
+            const output = document.getElementById('aiTestOutput');
+            btn.disabled = true;
+            output.innerHTML = "<div class='flex items-center gap-2'><div class='spinner-border spinner-border-sm text-blue-500'></div><span class='text-blue-500 uppercase font-black text-[10px] animate-pulse tracking-widest'>Establishing AI Link...</span></div>";
+
+            try {
+                // Keyless AI orchestration
+                const response = await puter.ai.chat(testPrompt, { model: document.getElementById('model-select').value });
+                output.innerHTML = marked.parse(response.toString());
+            } catch (err) {
+                output.innerHTML = `<div class='text-red-500 font-bold'>ENCRYPTION ERROR: ${err.message}</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = "Execute Benchmarking Simulation";
+            }
+        }
+
+        function copyPrompt(i) { navigator.clipboard.writeText(generatedPrompts[i].content); alert("Prompt copied to MassICT secure clipboard."); }
+        function exportPrompts() { 
+            const blob = new Blob([generatedPrompts.map(p => `[${p.title}]\n${p.content}`).join('\n\n')], {type: 'text/plain'});
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `MassICT_Simulation_Log_${Date.now()}.txt`; a.click();
+        }
+    </script>
 </body>
 
 </html>
